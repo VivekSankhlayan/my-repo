@@ -13,5 +13,5 @@ import com.innoventes.test.app.entity.Company;
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 	
 	 @Query(value = "SELECT * FROM COMPANY ", nativeQuery = true)
-	public Optional<Company> getCompanyByCode(String companyCode);
+		public Company getCompanyByCode(String companyCode);
 }

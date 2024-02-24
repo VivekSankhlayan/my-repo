@@ -34,6 +34,14 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public Company addCompany(Company company) throws ValidationException {
 		return companyRepository.save(company);
+		if (company.getCompanyName().length() >= 5 && company.getEmail().contains("@")) {
+			if (company.getStrength() == null || company.getStrength() > 0) {
+				if (companyCodeValidator(company)) {
+					return companyRepository.save(company);
+				}
+			}
+		}
+		return  company;
 	}
 
 	@Override
@@ -55,8 +63,10 @@ public class CompanyServiceImpl implements CompanyService {
 		companyRepository.deleteById(existingCompanyRecord.getId());
 	}
 	
+
+
 	private boolean companyCodeValidator(Company company) {
-        String companyCode = company.getCompanyByCode();
+        String companyCode = company.getCompanyCode();
         if (companyCode != null) {
             if (companyCode.length() == 5) {
                 if (companyCode.charAt(4) == 'N' || companyCode.charAt(4) == 'E') {

@@ -17,6 +17,6 @@ public interface CompanyService {
 	void deleteCompany(Long id);
 	
 	 Company getCompanyById(Long id);
-	
+		
 	 Company getCompanyByCode(String companyCode);
 }

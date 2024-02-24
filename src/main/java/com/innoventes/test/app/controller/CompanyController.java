@@ -48,7 +48,6 @@ public class CompanyController {
 
 	}
 		    
-		    
 	@GetMapping(value = "/companies/{companyCode}")
 	public ResponseEntity<CompanyDTO> getCompanyByCode(@PathVariable(value = "companyCode")
 															  String companyCode) {
@@ -56,7 +55,8 @@ public class CompanyController {
 		CompanyDTO companyDTO = companyMapper.getCompanyDTO(company);
 		return ResponseEntity.status(HttpStatus.OK).body(companyDTO);
 	}
-
+	    
+	
 
 	@GetMapping("/companies")
 	public ResponseEntity<List<CompanyDTO>> getAllCompanies() {
